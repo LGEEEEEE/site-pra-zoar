@@ -1,0 +1,237 @@
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuzinho hj ?</title>
+    <link rel="shortcut icon" href="https://static-cdn77.xvideos-cdn.com/v3/img/skins/default/logo/xv.black.32.png" type="image/x-icon">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Aboreto&display=swap');
+
+html, body, h1
+{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: 'Aboreto', cursive;
+    box-sizing: border-box;
+    overflow: hidden;
+    background-image: url(https://i1.sndcdn.com/artworks-000646225558-ei224k-t500x500.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+
+}
+
+h1{
+    font-size: 40px;
+    color: white;
+    text-align: center;
+    padding: 50px 10px;
+}
+
+.container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+.container-titulo{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-content: center;
+}
+.container-button{
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    gap: 30px;
+}
+
+button {
+    padding: 1.3em 3em;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: rgb(255, 255, 255);
+    background-color: black;
+    border: 1px black;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    
+}
+  
+button:hover {
+    background-color: gray;
+    box-shadow: 0px 15px 20px rgba(240, 93, 124, 0.719);
+    color: #fff;
+    transform: translateY(-7px);
+}
+  
+button:active {
+    transform: translateY(-1px);
+}
+
+#botao {
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* #botao2 {
+    position: fixed;
+    top: 50%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+} */
+
+/* animação coração */
+
+.heart {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    transform: rotate(-135deg);
+    margin: 100px auto;
+    animation: pulse 1s infinite alternate
+  }
+  
+.square {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    background-color: #e74c3c;
+}
+  
+.circle {
+    width: 200px;
+    height: 200px;
+    border-radius: 200px;
+    position: absolute;
+    background-color: #e74c3c;
+}
+  
+.top {
+    top: 50%;
+}
+  
+.left {
+    left: 50%
+}
+  
+@keyframes pulse {
+    0% {transform: scale(0.9) rotate(-135deg);}
+    100% {transform: scale(1.1) rotate(-135deg);}
+}
+    </style>
+
+</head>
+<body>
+    <div class="container wrap">
+
+        <div class="container-titulo">
+            <h1>Cuzinho hoje ?</h1>
+        </div>
+
+        <div class="container-button">
+            
+            <div class = "heart" id="heart">
+                <div class="square"></div>
+                <div class="circle top"></div>
+                <div class="circle left"></div>
+            </div>
+
+            <div class="botao" id="botao">
+                <a href="https://www.youtube.com/watch?v=koddSH2Gp0I" target="_blank">
+                <button class="item" type="button" id="btn-sim">SIM
+                    
+                </button>
+                </a>
+            </div>
+
+            <div class="botao" id="botao2" onmouseover="move(this)" >
+                <button type="button" class="btn-nao">NÃO</button>
+            </div>
+        </div>
+
+    </div>  
+   
+
+    <script>let botao = document.querySelector('.btn-nao');
+        let botaoSim = document.getElementById("botao");
+        
+        document.getElementById("heart").style.display = "none";
+        
+        
+        botao.addEventListener('click', function(){
+            move(this);
+        });
+        
+        //função que faz o botão ficar movendo
+        function move(el){  
+            let div = document.getElementsByClassName("container-button");
+        
+            let width = Math.ceil(el.clientWidth);
+            let height = Math.ceil(el.clientHeight);
+        
+            let wdh = Math.floor(div[0].clientHeight);
+            let wdw = Math.floor(div[0].clientWidth);
+        
+            var changeTop = Math.floor((Math.random() * (wdh - height + 1)));
+            var changeLeft = Math.floor((Math.random() * (wdw - width + 1)));
+            console.log("Height: " + changeTop + " Width: " + changeLeft);
+        
+            el.style.marginTop = changeTop + "px";
+            el.style.marginLeft = changeLeft + "px";
+        }
+        
+        botaoSim .addEventListener('click', function(){
+            document.getElementById("btn-sim").classList.remove("move");
+        
+            setHeart(this);
+            adicionaDiv()
+            
+        });
+        
+        function setHeart(element){
+            document.getElementById("botao").style.display = "none";
+            document.getElementById("botao2").style.display = "none";
+            document.getElementById("heart").style.display = "block";
+            playSong();
+        }
+        
+        function playSong(){
+            let snd = new Audio("love.mp3");
+            snd.play();
+        }
+        
+        function adicionaDiv() {
+            document.getElementById("heart")[0]
+        }
+        
+        
+        
+        
+        
+        
+           </script>
+</body>
+</html>
